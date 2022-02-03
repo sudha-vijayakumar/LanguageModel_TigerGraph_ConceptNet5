@@ -101,20 +101,63 @@ class WNimporter():
         if returnSorted:
             return sd
 
-
     def processTriples(self, triples):
         self.nodes = {}
         self.relationships = []
 
         self.duplicate_gloss = []
+        self.definition = {}
+        self.tags = set()
+        self.wordKey = {}
+        self.antonyms = []
+        
+        for idx, t in enumerate(triples):
 
-        count = 0 
+            if t[1]=='wdo#antonym':
+                    try:
+                      sid = t[0].split('#')
+                      sid = sid[1].split('-')
+                      sid = sid[-2]+'-'+sid[-1]
+
+                      eid = t[2].split('#')
+                      eid = eid[1].split('-')
+                      eid = eid[-2]+'-'+eid[-1]
+
+                      self.antonyms.append( {':START_ID': sid, ':END_ID': eid, ':TYPE': t[1]} )
+                    except:
+                      print()
+
+            if t[1] not in self.tags:
+              self.tags.add(t[1])
+              t[1] = str(t[1])
+            
+            if t[1] == str('http://www.w3.org/ns/lemon/ontolex#isLexicalizedSenseOf'):
+                process = t[0].split('#')
+                word = process[0].rsplit('/', 1)[-1]
+                id_ = t[2].rsplit('/', 1)[-1]
+                
+
+                if id_ not in self.wordKey:
+                  self.wordKey[id_]=word
+            try:
+                if t[0] in ['', '\n']:
+                    continue    # empty line
+                if t[0].startswith('_'):
+                    if t[0] not in self.definition:
+                      self.definition[t[0]]=t[2]
+            except:
+              print('empty definition')
+
         for idx, t in enumerate(triples):
             try:
                 if t[0] in ['', '\n']:
                     continue    # empty line
                 if t[0].startswith('_'):
                     continue    # we ignore lists
+                    
+
+                if 'lemma' in str(t[0]):
+                  continue
 
                 nodeid = None
                 t0Sdash = t[0].split('#')
@@ -129,71 +172,39 @@ class WNimporter():
                                 self.nodes[nodeid]['Forms'] = {}
                             self.nodes[nodeid]['Forms'][t0Sdash[1]] = t[2].split('@')[0][1:-1]
 
-                        # #CanonicalForm and #Form- nodes have only 'lemon#writtenRep' and 'w3#type' relationships
+                        # #Canonic  ZZXDSZalForm and #Form- nodes have only 'lemon#writtenRep' and 'w3#type' relationships
                         # As we don't create nodes for Forms, we ignore the 'w3#type' relationship that would
                         # overwrite the base node one.
                         continue
                     elif t0Sdash[1].startswith('Component-'):
                         continue    # we ignore 'Component-' nodes
                     # else:
-                    #     We consider it as a normal node, e.g. 'wn/nationality-n#1-n'
-
+                    #     # We consider it as a normal node, e.g. 'wn/nationality-n#1-n'
+                    #     print(t)
 
                 # this is the id:ID property. We don't need to set it as it's already implicitly in the dictionary as key
                 nodeid = t[0]   
-
+                # print(t)
                 if nodeid not in self.nodes:
                     self.nodes[nodeid] = {}
 
                 n = self.nodes[nodeid] # shortcut
                 id_only=nodeid.rsplit('/', 1)[-1]
-                if count==100:
-                  break
                 
+
                 # LABEL property
                 if   t[1] == 'w3#type' and t[2] not in ['lemon#Form', 'lemon#Component']: # nodeid is set to the base component
-                    count+=1
+                    # count+=1
 
                     n[':LABEL'] = id_only
-                    response = requests.get("http://wordnet-rdf.princeton.edu/json/id/"+id_only)
-                    data = response.json()
-                    dic = data[0]
 
-                    defn = dic['definition']
-                    lemmas = dic['lemmas']
-                    word = (lemmas[0])['lemma']
-                       
-                    pos = (id_only.split('-'))[-1]
+                    try:
+                      word = self.wordKey[id_only]
+                      n['wdo#word'] =  word
                     
+                    except:
+                      print()
 
-                    n['wdo#definition'] = defn
-                    n['wdo#word'] = word
-
-                # Relationships
-                elif t[1] in ['lemon#sense', 'lemon#reference', 'wdo#derivation', 'wdo#hyponym', 'wdo#hypernym', 'wdo#similar', 'wdo#antonym', \
-                              'wdo#member_meronym', 'wdo#member_holonym', 'wdo#pertainym', 'wdo#also', \
-                              'wdo#part_meronym','wdo#mero_part','wdo#part_holonym', 'wdo#instance_hyponym', 'wdo#instance_hypernym' \
-                              'wdo#domain_member_category', 'wdo#domain_category', 'wdo#verb_group', 'wdo#domain_region', 'wdo#domain_member_region' \
-                              'wdo#attribute', 'wdo#has_domain_topic','wdo#domain_usage', 'wdo#domain_member_usage', 'wdo#substance_holonym', 'wdo#substance_meronym', \
-                              'wdo#entail', 'wdo#action', 'wdo#cause', 'wdo#theme', 'wdo#result', 'wdo#participle', 'wdo#agent', 'wdo#patient', \
-                              'wdo#beneficiary', 'wdo#location', 'wdo#instrument', 'wdo#goal', 'wdo#creator', 'wdo#product', 'wdo#experiencer']:
-                    
-                    self.relationships.append( {':START_ID': nodeid, ':END_ID': t[2], ':TYPE': t[1]} )
-                    
-
-                # Reverse relationships
-                elif t[1] in ['wdo#synset_member']: 
-                    self.relationships.append( {':START_ID': t[2], ':END_ID': nodeid, ':TYPE': t[1]} )
-
-                # Integer properties
-                elif t[1] in ['wdo#sense_number', 'wdo#tag_count', 'wdo#lex_id']:
-                    if t[1] in n:
-                        print(t[1], 'already in n!', t[0], t[1], t[2])
-                        break
-                    if t[2] != '"None"':
-                        n[ t[1] ] = int( t[2].split('^^')[0][1:-1] )  # "0"^^<http://www.w3.org/2001/XMLSchema#integer>  -> 0
-                    #else:
-                    #    print '\nNumeric property is None, ignoring.', t[0], t[1], t[2]
 
                 # String properties
                 elif t[1] in ['wdo#partOfSpeech']:
@@ -205,7 +216,32 @@ class WNimporter():
                     pos = pos.split('#')
                     n['wdo#partOfSpeech'] = pos[1] 
 
+                elif str(t[1])==str('http://purl.org/dc/terms/subject'):
+                    subject = t[2].replace('"','')
+                    n['wdo#subject'] = subject
+
+                elif t[1] in ['wdo#definition']:
+                  defnKey = t[2]
+                  if t[2] in self.definition:
+                    defn = self.definition[t[2]]
+                    defn = defn.replace('"','')
+                    n['wdo#definition'] = defn
+
+                # Relationships
                 
+                elif t[1] in self.tags:
+                    self.relationships.append( {':START_ID': nodeid, ':END_ID': t[2], ':TYPE': t[1]} )
+               
+
+                # Reverse relationships
+                elif t[1] in ['wdo#synset_member']: 
+                    self.relationships.append( {':START_ID': t[2], ':END_ID': nodeid, ':TYPE': t[1]} )
+
+                
+                
+
+                # elif t[1] in self.tags:
+                #   print(t)
                 # IGNORED:
                 #     lemon#canonicalForm : this is handled differently because we don't create a node for canonicalForm, we have an attribute in the base node
                 #     lemon#writtenRep : these relationships are for CanonicalForm and Form nodes only
@@ -230,44 +266,48 @@ class WNimporter():
         sys.stdout.flush())
         self.calculateLowercaseNodesIDs()
         self.writeCSVs()
+        
         print('done.')
-
         print('#### Log file written in ', 
-        self.writeLogFile())    
+        self.writeLogFile()) 
 
     def writeCSVs(self):
         self.not_found_nodes = []
 
         with open(self.nodesFilename, 'w') as f:
-            nodeProperties = ['id:ID', ':LABEL', 'wdo#word','wdo#definition','wdo#synset_member', 'wdo#partOfSpeech']
-            headerText = ['uri', 'id', 'word','definition','synset', 'pos']
+            nodeProperties = ['id:ID', ':LABEL', 'wdo#word', 'wdo#partOfSpeech','wdo#definition','wdo#subject']
+            headerText = ['uri', 'id','word','pos', 'definition','subject']
             header = '{0}\n'.format('\t'.join(headerText)) 
             f.write(header)
             
             for nodeID in self.nodes:
                 n = self.nodes[nodeID] # faster to type
-                print(n)
+                
                 if n:
                   l = ''
                   l += '"{0}"\t"{1}"\t'.format(nodeID, n[':LABEL'])
                   
+
                   if 'wdo#word' in n:
                       l += '"{0}"\t'.format(n['wdo#word'])
                   else:
                       l += '\t'
+                  
+
+                  if 'wdo#partOfSpeech' in n:
+                      l += '"{0}"\t'.format(n['wdo#partOfSpeech'])
+                  else:
+                      l += '\t'
+
                   
                   if 'wdo#definition' in n:
                       l += '"{0}"\t'.format(n['wdo#definition'])
                   else:
                       l += '\t'
 
-                  if 'wdo#synset_member' in n:
-                      l += '"{0}"\t'.format(n['wdo#synset_member'])
-                  else:
-                      l += '\t'
-
-                  if 'wdo#partOfSpeech' in n:
-                      l += '"{0}"\n'.format(n['wdo#partOfSpeech'])
+                  
+                  if 'wdo#subject' in n:
+                      l += '"{0}"\n'.format(n['wdo#subject'])
                   else:
                       l += '\n'
                   
@@ -287,6 +327,22 @@ class WNimporter():
 
                     start_node = start_node.rsplit('/', 1)[-1]
                     end_node = end_node.rsplit('/', 1)[-1]
+                    typeof=r[':TYPE'].split('#')
+                    typeof=typeof[1]
+                    rel = '"{0}"\n'.format( '"\t"'.join([start_node, end_node, typeof]) )
+                    f.write(rel)
+                else:
+                    self.rels_with_orphan_nodes.append(r)
+
+            for r in self.antonyms:
+                print(r)
+                start_node = r[':START_ID']
+                end_node = r[':END_ID']
+                print(start_node)
+                if start_node != None and end_node != None:
+
+                    # start_node = start_node.rsplit('/', 1)[-1]
+                    # end_node = end_node.rsplit('/', 1)[-1]
                     typeof=r[':TYPE'].split('#')
                     typeof=typeof[1]
                     rel = '"{0}"\n'.format( '"\t"'.join([start_node, end_node, typeof]) )
