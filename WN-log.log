@@ -1,0 +1,24 @@
+#### WordNet import log file.
+
+#### Filters: 
+http://wordnet-rdf.princeton.edu/ontology#translation
+wn20
+wn30
+http://www.w3.org/2002/07/owl#sameAs
+http://wordnet-rdf.princeton.edu/ontology#old_sense_key
+http://wordnet-rdf.princeton.edu/ontology#verbnet_class
+
+#### Replacements: 
+http://wordnet-rdf.princeton.edu/ontology : wdo
+http://wordnet-rdf.princeton.edu/wn31 : wn
+http://www.w3.org/1999/02/22-rdf-syntax-ns#type : w3#type
+http://www.w3.org/2000/01/rdf-schema#label : w3#label
+http://www.w3.org/1999/02/22-rdf-syntax-ns#first : w3#first
+http://www.w3.org/1999/02/22-rdf-syntax-ns#rest : w3#rest
+http://lemon-model.net/lemon : lemon
+
+#### Node referred in relationships but not existing:
+
+#### The above nodes were referred in the following triples:
+
+#### Duplicate gloss properties:
