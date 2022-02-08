@@ -29,9 +29,9 @@ class WNimporter():
 
         self.WNfname = wordnetRDFfilename
         self.path = os.path.dirname(self.WNfname)
-        self.nodesFilename = os.path.join(self.path, 'WN-nodes.csv')
-        self.edgesFilename = os.path.join(self.path, 'WN-edges.csv')
-        self.logFilename = os.path.join(self.path, 'WN-log.log')
+        self.nodesFilename = os.path.join(self.path, 'csv_imports/WN-nodes.csv')
+        self.edgesFilename = os.path.join(self.path, 'csv_imports/WN-edges.csv')
+        self.logFilename = os.path.join(self.path, 'csv_imports/WN-log.log')
         self.WN_unique_fname = self.WNfname[:-3] + '_unique' + self.WNfname[-3:]
 
     def retrieveWordNet(self):
