@@ -1,0 +1,4 @@
+1) Run
+    > sh download_conceptnet.sh
+2) WordNet.ipynb
+3) mergeWordNet-ConceptNet.ipynb
