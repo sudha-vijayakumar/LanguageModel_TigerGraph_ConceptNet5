@@ -135,8 +135,11 @@ Here, 'get_word_definition' is the name of the insstalled GSQL query in the tgcl
 
 With this step, we are done with the installation and configuration of the RASA chatbot.
 
+### Step-5: **(gSql Queries)** Create & Install gsql queries
 
-### Step-5: **(Web UI)** Setting up a web ui for the RASA chatbot
+ 
+
+### Step-6: **(Web UI)** Setting up a web ui for the RASA chatbot
 
 - In this work, we are using an open-source javascript-based chatbot UI to interact with the RASA solution we implemented in Step-1.
 - The RASA server endpoint is configured in the widget/static/Chat.js as shown below,
@@ -147,7 +150,7 @@ With this step, we are done with the installation and configuration of the RASA 
 
 All right, we are one step close to seeing the working of the TigerGraph and RASA integration.
 
-### Step-6: **(RASA+TigerGraph)** Start RASA and run Actions
+### Step-7: **(RASA+TigerGraph)** Start RASA and run Actions
 
 Run the below commands in separate terminals,
 
@@ -158,7 +161,7 @@ Terminal-1:
 Terminal-2:
 - $ rasa run actions
 
-### Step-7: **(ChatBot UI)** Open Chatbot User interface
+### Step-8: **(ChatBot UI)** Open Chatbot User interface
 
 - Unzip ChatBot_Widget folder.
 - Hit open ChatBot_Widget/index.html to start interacting with the TigerBot movie recommendation engine!
