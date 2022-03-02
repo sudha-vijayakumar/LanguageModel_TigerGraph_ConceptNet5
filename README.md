@@ -14,20 +14,19 @@ A detailed overview of the project is presented in the below technical article:
 
 # Steps to run this solution:
 
+> Prerequisites:
+  - Python3 runtime
+  - Jupyter notebook
+  - RASA 
+
 > Step-0: Clone the repository
 
   - git clone https://github.com/sudha-vijayakumar/LanguageModel.git
   
 > Step-1/2: Data Gathering & Preprocessing - ConceptNet5, WordNet 
 
-  - cd Movie_Chatbot
-  
-  >> Terminal-1:
-  - $ rasa train
-  - $ rasa run -m models --enable-api --cors "*" --debug
-
-  >> Terminal-2:
-  - $ rasa run actions
+  - Run 1_WordNet.ipynb
+  - Run 2_
   
 >  Step-3: Load ConceptNet5, WordNet As TigerGraph
 
