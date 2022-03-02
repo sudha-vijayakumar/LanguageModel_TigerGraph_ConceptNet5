@@ -213,6 +213,7 @@ Terminal-2:
 <p align="center">
 <img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/15.png" width="400px">
 </p>
+
 ### Step-8: **(ChatBot UI)** Open Chatbot User interface
 
 - Unzip ChatBot_Widget folder.
