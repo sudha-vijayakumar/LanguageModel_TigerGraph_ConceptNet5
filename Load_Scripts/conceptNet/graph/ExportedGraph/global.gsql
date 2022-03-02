@@ -1,7 +1,0 @@
-CREATE VERTEX synset(PRIMARY_ID id STRING, definition STRING, pos STRING) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true"
-CREATE VERTEX word(PRIMARY_ID id STRING, name STRING, pos STRING, conceptUri STRING, label STRING) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true"
-CREATE VERTEX part_of_speech(PRIMARY_ID id STRING, type STRING) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true"
-CREATE DIRECTED EDGE Attribute(FROM synset, TO synset|FROM synset, TO word|FROM word, TO synset|FROM word, TO word) WITH REVERSE_EDGE="reverse_Attribute"
-CREATE DIRECTED EDGE InSynset(FROM synset, TO synset|FROM synset, TO word|FROM word, TO synset|FROM word, TO word) WITH REVERSE_EDGE="reverse_InSynset"
-CREATE DIRECTED EDGE has_pos(FROM synset, TO part_of_speech|FROM word, TO part_of_speech) WITH REVERSE_EDGE="reverse_has_pos"
-CREATE DIRECTED EDGE is_pos_of(FROM part_of_speech, TO synset|FROM part_of_speech, TO word) WITH REVERSE_EDGE="reverse_is_pos_of"
