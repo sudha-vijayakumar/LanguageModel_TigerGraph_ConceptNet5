@@ -14,26 +14,29 @@ A detailed overview of the project is presented in the below technical article:
 
 # Steps to run this solution:
 
-> Prerequisites:
-  - Python3 runtime
-  - Jupyter notebook
-  - RASA 
+> Prerequisites: 
+  Before, getting started install the following,
+  - Python 3 => https://docs.python-guide.org/starting/install3/osx/
+  - Jupyter notebook => https://jupyter.org/install
+  - RASA => https://rasa.com/docs/rasa/installation/
 
 > Step-0: Clone the repository
 
   - git clone https://github.com/sudha-vijayakumar/LanguageModel.git
   
-> Step-1/2: Data Gathering & Preprocessing - ConceptNet5, WordNet 
+> Step-1: Data Gathering - ConceptNet5, WordNet 
 
   - Run 1_WordNet.ipynb
   - Run 2_MergeWordNet-ConceptNet.ipynb
-  - Run 3_Preprocess.ipynb
   
->  Step-3: Load ConceptNet5 As TigerGraph
+>  Step-2: Data Preprocessing - ConceptNet5, WordNet 
 
+  - Run 3_Preprocess.ipynb
 
-  >> Unique Edge: ConceptNet5
-  - Run 6_LanguageModel_CN_UniqueEdge.ipynb
+>  Step-3: Load ConceptNet5 As TigerGraph (for Wiki demo chatbot)
+
+  >> Unique Edge: WordNet
+  - Run 5_LanguageModel_WN_UniqueEdge.ipynb
   ** pic
   
 >  Step-4: Building Dictionary Bot with RASA + TigerGraph ConceptNet5
@@ -51,15 +54,9 @@ A detailed overview of the project is presented in the below technical article:
 This help page will not go into the depth of RASA, TigerGraph functionalities. This help page will touch base and demo how ConceptNet5 can be loaded into TigerGraph and integrated with RASA to implement a dictionary bot.
 
 
-## Putting things to work
+## Detailed Steps
 
-### Step-1/2: **(Language Graphs)** Step-1/2: Data Gathering & Preprocessing - ConceptNet5, WordNet 
-
-#### Step-1/2a: WordNet
-
-
-#### Step-1/2b: ConceptNet5
-
+**NOTE:** Step-1, 2 are same as above
   
 ### Step-3: **(TigerGraph)** Load ConceptNet5, WordNet As TigerGraph 
 
@@ -68,7 +65,7 @@ There are 3 different variations of the language graphs. Run the corresponding j
 #### Step-3a: WordNet, ConceptNet5 with Single edge
   - Run 4_LanguageModel_SingleEdge.ipynb
   -   
-#### Step-3b: WordNet with Unique edges
+#### Step-3b: WordNet with Unique edges (used as backend for Wiki demo chatbot)
  - Run 5_LanguageModel_WN_UniqueEdge.ipynb
  
 #### Step-3c: ConceptNet5 with Unique edges
@@ -84,7 +81,7 @@ Open a new terminal and setup RASA using the below commands:
 - $ source bin/activate
 - $ pip install rasa
 
-#### Step-4b: Create new RASA project
+#### Step-4q: Create new RASA project
 - $ rasa init
 
 After the execution of the above command, you will be prompted to enter project directory and name as desired. In this case, project named 'WIKI_Chatbot' will be created in the current directory as shown below,
@@ -99,7 +96,7 @@ Below is a kick-off conversation with the newly created chatbot,
 
 Ya, that's quite simple to create a chatbot now with RASA!
 
-#### Step-4c: Define intents, stories, action triggers
+#### Step-4b: Define intents, stories, action triggers
 Now, navigate to the project folder WIKI_Chatbot/data and modify the default nlu.yml and rules.yml files by adding intents, rules for our dictionary usecase as show below,
 
 <p align="center">
@@ -110,10 +107,10 @@ Now, navigate to the project folder WIKI_Chatbot/data and modify the default nlu
 <img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/Movie_Chatbot/snapshots/Screen%20Shot%202021-12-28%20at%201.43.59%20AM.png" width="700" height="450">
 </p>
 
-#### Step-4d: Install the TigerGraph python library using pip with the below command,
+#### Step-4c: Install the TigerGraph python library using pip with the below command,
 - pip install pyTigerGraph
 
-#### Step-1e: Define action endpoints
+#### Step-4d: Define action endpoints
 Now, navigate to the project folder WIKI_Chatbot/actions and modify the actions.py file to include TigerGraph connection parameters and action definitions with the respective GSQL querying endpoints as show below,
 
 
@@ -125,6 +122,7 @@ Now, navigate to the project folder WIKI_Chatbot/actions and modify the actions.
 <img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/Movie_Chatbot/snapshots/Screen%20Shot%202021-12-28%20at%201.50.07%20AM.png" width="700" height="450">
 </p>
 
+#### Step-4e: Set domain.yml 
 Add the defined action method to the domain.yml as shown below,
 
 <p align="center">
@@ -138,7 +136,6 @@ With this step, we are done with the installation and configuration of the RASA 
 ### Step-5: **(gSql Queries)** Create & Install gsql queries
 
  
-
 ### Step-6: **(Web UI)** Setting up a web ui for the RASA chatbot
 
 - In this work, we are using an open-source javascript-based chatbot UI to interact with the RASA solution we implemented in Step-1.
