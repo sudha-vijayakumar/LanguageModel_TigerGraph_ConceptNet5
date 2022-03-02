@@ -39,7 +39,7 @@ This help page will not go into the depth of RASA, TigerGraph functionalities. T
 
 Here is the high-level outline of the technological stack used in this demo project,
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/Movie_Chatbot/snapshots/TechnicalStack.jpg" width="450" height="600">
+<img src="" width="450" height="600">
 </p>
 
 
