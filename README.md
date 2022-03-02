@@ -19,7 +19,7 @@ A detailed overview of the project is presented in the below technical article:
   - Python 3 => https://docs.python-guide.org/starting/install3/osx/
   - Jupyter notebook => https://jupyter.org/install
   - RASA => https://rasa.com/docs/rasa/installation/
-  - tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
+  - Create tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
 
 > Step-0: Clone the repository
 
@@ -151,7 +151,8 @@ Now, navigate to the project folder WIKI_Chatbot/data and modify the default nlu
 #### Step-4d: Define action endpoints
 Now, navigate to the project folder WIKI_Chatbot/actions and modify the actions.py file to include TigerGraph connection parameters and action definitions with the respective GSQL querying endpoints as show below,
 
-
+- Update the solution name and credentials to your data.
+  **Refer:** Create tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
 
 <p align="center">
 <img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/11.png" width="500px">
