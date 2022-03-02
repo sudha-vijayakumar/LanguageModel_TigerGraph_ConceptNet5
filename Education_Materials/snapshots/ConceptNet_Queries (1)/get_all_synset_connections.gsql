@@ -1,0 +1,14 @@
+CREATE QUERY get_all_synset_connections(VERTEX<synset> syn) FOR GRAPH ConceptNet SYNTAX V2 { 
+  /******************************************
+	* Grabing all connections of a specified Patient
+  * Sample Parameter: synset
+	******************************************/
+  ListAccum<EDGE> @@edgeList;
+	seed = {syn};
+	
+	S1 = SELECT s
+	       FROM seed:s -(:e)-:t
+	       ACCUM @@edgeList += e;
+	
+  PRINT  @@edgeList AS edges; 
+}
