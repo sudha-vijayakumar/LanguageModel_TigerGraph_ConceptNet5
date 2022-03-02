@@ -3,8 +3,9 @@
 This is a complete solution package for representing ConceptNet5, WordNet as TigerGraphs' and building a Dictionary application using the RASA platform. 
 
 > Technical Blog
+
 A detailed overview of the project is presented in the below technical article:
-https://medium.com/@sudha.vijayakumar_74093/a-common-sense-word-network-with-tigergraph-573745e4504d
+- https://medium.com/@sudha.vijayakumar_74093/a-common-sense-word-network-with-tigergraph-573745e4504d
 
 
 > Hands-On Video Tutorial
