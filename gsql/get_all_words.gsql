@@ -1,0 +1,9 @@
+CREATE QUERY get_all_words() FOR GRAPH WordNet { 
+  ListAccum<STRING> @@ageMap;
+	Start = {word.*};
+	
+	Start = select s from Start:s
+	        accum @@ageMap += s.name;
+	
+	print @@ageMap;
+}

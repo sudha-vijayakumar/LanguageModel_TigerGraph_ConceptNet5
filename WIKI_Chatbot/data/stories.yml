@@ -1,6 +1,6 @@
 version: "2.0"
 stories:
-- story: health path
+- story: happy path
   steps:
   - intent: greet
   - action: utter_responsibility

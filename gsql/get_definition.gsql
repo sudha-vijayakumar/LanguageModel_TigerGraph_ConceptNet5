@@ -1,0 +1,9 @@
+CREATE QUERY get_definition(STRING word_query) FOR GRAPH WordNet { 
+  /* Write query logic here */ 
+  start = {word.*};
+   
+   result = SELECT v FROM start:v
+            WHERE v.name == word_query;
+  
+   PRINT result AS words;
+  }

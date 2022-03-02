@@ -79,7 +79,7 @@ class ActionHypernym(Action):
         prediction = tracker.latest_message['entities'][0]['value']
 
         if prediction:
-            query_response = conn.runInstalledQuery("get_synonyms",{"word_query": prediction})
+            query_response = conn.runInstalledQuery("get_hypernyms",{"word_query": prediction})
             r=query_response[0]
             w=r["definition"]
             vals=[]
@@ -109,7 +109,7 @@ class ActionHyponym(Action):
         prediction = tracker.latest_message['entities'][0]['value']
 
         if prediction:
-            query_response = conn.runInstalledQuery("get_related_words",{"word_query": prediction})
+            query_response = conn.runInstalledQuery("get_hyponyms",{"word_query": prediction})
             r=query_response[0]
             w=r["definition"]
             vals=[]

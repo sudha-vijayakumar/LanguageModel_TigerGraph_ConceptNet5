@@ -1,0 +1,16 @@
+CREATE QUERY get_antonyms(STRING word_query) FOR GRAPH WordNet { 
+  /**************************************
+	
+	***************************************/
+	ListAccum<STRING> @@edgeList;
+	seed = {word.*};
+	
+	S1 = SELECT s
+	     FROM seed:s -(antonym:e)- :t
+       WHERE s.name == word_query
+	    ACCUM @@edgeList += t.name+":"+t.definition;
+	
+	
+
+  PRINT  @@edgeList; 
+}

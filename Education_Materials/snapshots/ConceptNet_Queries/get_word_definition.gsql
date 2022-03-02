@@ -1,0 +1,15 @@
+CREATE QUERY get_word_definition(STRING word_query) FOR GRAPH ConceptNet { 
+	/**********************************************************
+	 * This query returns the distribution of the number of 
+	 * recorded deceased patients per age year. 
+	 * 
+	 * There may be some discrepancies in the data which would
+	 * explain some weird occurrences.
+   *********************************************************/
+   start = {word.*};
+   
+   result = SELECT v FROM start:v
+            WHERE v.name == word_query;
+  
+   PRINT result AS related_definition;
+  }
