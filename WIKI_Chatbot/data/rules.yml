@@ -1,0 +1,27 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+- rule: welcome user
+  conversation_start: true  # this rule only applies at the beginning of a conversation
+  steps:
+  - intent: greet
+  - action: utter_responsibility
+
+- rule: Definition
+  steps:
+  - intent: get_word_definition
+    entities:
+    - wordid: reef
+  - action: action_word_definition

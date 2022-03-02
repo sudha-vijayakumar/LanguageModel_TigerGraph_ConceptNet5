@@ -1,0 +1,56 @@
+version: "2.0"
+stories:
+- story: health path
+  steps:
+  - intent: greet
+  - action: utter_responsibility
+  - intent: get_word_definition
+  - action: action_word_definition
+  - intent: get_hypernym
+  - action: action_hypernym
+  - intent: get_hyponym
+  - action: action_hyponym
+  - intent: get_antonym
+  - action: action_antonym
+  - intent: get_all_connections
+  - action: action_all_connections
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_responsibility
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_responsibility
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+- story: Story from Conversation
+  steps:
+  - intent: get_word_definition
+    entities:
+    - wordid: graph
+  - action: action_word_definition
+  - intent: get_hypernym
+    entities:
+    - wordid: graph
+  - action: action_hypernym
+  - intent: get_hyponym
+    entities:
+    - wordid: graph
+  - action: action_hyponym
+  - intent: get_antonym
+    entities:
+    - wordid: graph
+  - action: action_antonym
+  - intent: get_all_connections
+    entities:
+    - wordid: graph
+  - action: action_all_connections

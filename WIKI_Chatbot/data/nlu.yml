@@ -1,0 +1,128 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- regex: wordid
+  examples: |
+    - \b[a-z]\b
+
+- intent: get_word_definition
+  examples: |
+    - what is the definition of the word [science](wordid)?
+    - Definition of [society](wordid)?
+    - what is the meaning of the word [telescope](wordid)?
+    - what does [vegetable](wordid) mean?
+
+- intent: get_antonym
+  examples: |
+    - what is the antonym of [science](wordid)?
+    - Antonym of [society](wordid)?
+    - what is the opposite of [telescope](wordid)?
+
+- intent: get_hypernym
+  examples: |
+    - what is the hypernym of [science](wordid)?
+    - Hypernym of [society](wordid)?
+    - what is the generic group of [telescope](wordid)?
+
+- intent: get_hyponym
+  examples: |
+    - what is the hyponym of [science](wordid)?
+    - Hyponym of [society](wordid)?
+    - what is the specific example of [telescope](wordid)?
+
+- intent: get_all_connections
+  examples: |
+    - words related to [science](wordid)?
+    - list me some of the related words of [society](wordid)?
+    - what are the words related to [telescope](wordid)?
+    - get me some words similar to[vegetable](wordid)?
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
