@@ -10,7 +10,7 @@ A detailed overview of the project is presented in the below technical article:
 
 > Hands-On Video Tutorial
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Y1s2IwjFzKM/0.jpg)](https://www.youtube.com/watch?v=Y1s2IwjFzKM)
+==COMING SOON==
 
 # Steps to run this solution:
 
@@ -19,6 +19,7 @@ A detailed overview of the project is presented in the below technical article:
   - Python 3 => https://docs.python-guide.org/starting/install3/osx/
   - Jupyter notebook => https://jupyter.org/install
   - RASA => https://rasa.com/docs/rasa/installation/
+  - tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
 
 > Step-0: Clone the repository
 
@@ -27,6 +28,9 @@ A detailed overview of the project is presented in the below technical article:
 > Step-1: Data Gathering - ConceptNet5, WordNet 
 
   - Run 1_WordNet.ipynb
+ 
+<img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/WIKI_Chatbot/git_snapshots/1.png" width="700" height="450">
+
   - Run 2_MergeWordNet-ConceptNet.ipynb
   
 >  Step-2: Data Preprocessing - ConceptNet5, WordNet 
@@ -91,7 +95,7 @@ After the execution of the above command, you will be prompted to enter project 
 
 Below is a kick-off conversation with the newly created chatbot,
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/Movie_Chatbot/snapshots/Screen%20Shot%202021-12-28%20at%201.40.48%20AM.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/1.png" width="700" height="450">
 </p>
 
 Ya, that's quite simple to create a chatbot now with RASA!
@@ -135,11 +139,13 @@ With this step, we are done with the installation and configuration of the RASA 
 
 ### Step-5: **(gSql Queries)** Create & Install gsql queries
 
+Recreate the below queries in tgcloud.io,
+**pic
  
 ### Step-6: **(Web UI)** Setting up a web ui for the RASA chatbot
 
 - In this work, we are using an open-source javascript-based chatbot UI to interact with the RASA solution we implemented in Step-1.
-- The RASA server endpoint is configured in the widget/static/Chat.js as shown below,
+- The RASA server endpoint is configured in the widget/static/js/components/Chat.js as shown below,
  
   <p align="center">
   <img src="https://github.com/sudha-vijayakumar/RASA_TigerGraph/blob/master/Movie_Chatbot/snapshots/Screen%20Shot%202021-12-28%20at%202.17.45%20AM.png" width="700" height="450">
