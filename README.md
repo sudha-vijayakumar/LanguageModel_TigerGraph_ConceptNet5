@@ -29,13 +29,16 @@ A detailed overview of the project is presented in the below technical article:
   - Run 2_MergeWordNet-ConceptNet.ipynb
   - Run 3_Preprocess.ipynb
   
->  Step-3: Load ConceptNet5, WordNet As TigerGraph
+>  Step-3: Load ConceptNet5 As TigerGraph
 
-  - Run tgcloud solution
 
+  >> Unique Edge: ConceptNet5
+  - Run 6_LanguageModel_CN_UniqueEdge.ipynb
+  ** pic
+  
 >  Step-4: Building Dictionary Bot with RASA + TigerGraph ConceptNet5
 
-  - cd Movie_Chatbot
+  - cd WIKI_Chatbot
   
   >> Terminal-1:
   - $ rasa train
@@ -60,10 +63,17 @@ This help page will not go into the depth of RASA, TigerGraph functionalities. T
   
 ### Step-3: **(TigerGraph)** Load ConceptNet5, WordNet As TigerGraph 
 
+There are 3 different variations of the language graphs. Run the corresponding jupyter notebook to generatee the desired language graphs.
 
 #### Step-3a: WordNet, ConceptNet5 with Single edge
+  - Run 4_LanguageModel_SingleEdge.ipynb
+  -   
 #### Step-3b: WordNet with Unique edges
+ - Run 5_LanguageModel_WN_UniqueEdge.ipynb
+ 
 #### Step-3c: ConceptNet5 with Unique edges
+  - Run 6_LanguageModel_CN_UniqueEdge.ipynb
+
 
 ### Step-4: **(RASA)** Building Dictionary Bot with RASA + TigerGraph ConceptNet5
 #### Step-4a: Install RASA
