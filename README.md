@@ -7,6 +7,7 @@ This is a complete solution package for representing ConceptNet5, WordNet as Tig
 A detailed overview of the project is presented in the below technical article:
 - https://medium.com/@sudha.vijayakumar_74093/a-common-sense-word-network-with-tigergraph-573745e4504d
 
+copyCodeBlock('<div>Thundercats</div>')
 
 > Hands-On Video Tutorial
 
