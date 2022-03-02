@@ -26,7 +26,8 @@ A detailed overview of the project is presented in the below technical article:
 > Step-1/2: Data Gathering & Preprocessing - ConceptNet5, WordNet 
 
   - Run 1_WordNet.ipynb
-  - Run 2_
+  - Run 2_MergeWordNet-ConceptNet.ipynb
+  - Run 3_Preprocess.ipynb
   
 >  Step-3: Load ConceptNet5, WordNet As TigerGraph
 
