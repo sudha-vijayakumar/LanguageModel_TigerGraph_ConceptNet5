@@ -28,27 +28,34 @@ A detailed overview of the project is presented in the below technical article:
 > Step-1: Data Gathering - ConceptNet5, WordNet 
 
   - Run 1_WordNet.ipynb
+  
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/1.png" width="200" height="150">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/1.png" width="200px">
 </p>
+
   - Run 2_MergeWordNet-ConceptNet.ipynb
-  <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/2.png" width="200" height="150">
+  
+<p align="center">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/2.png" width="200px">
 </p>
+
 > Step-2: Data Preprocessing - ConceptNet5, WordNet 
 
   - Run 3_Preprocess.ipynb
+  
   <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/3.png" width="350">
-</p>
-
+  <img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/3.png" width="200px">
+  </p>
+  
 > Step-3: Load ConceptNet5 As TigerGraph (for Wiki demo chatbot)
 
-  > Unique Edge: WordNet
+  >> Unique Edge: WordNet
+  
   - Run 5_LanguageModel_WN_UniqueEdge.ipynb
+  
     <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/5.png" width="350">
-</p>
+    <img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/5.png" width="200px">
+    </p>
   
 >  Step-4: Building Dictionary Bot with RASA + TigerGraph ConceptNet5
 
@@ -79,7 +86,7 @@ There are 3 different variations of the language graphs. Run the corresponding j
   
   
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/4.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/4.png" width="200px">
 </p>
 
 #### Step-3b: WordNet with Unique edges (used as backend for Wiki demo chatbot)
@@ -87,17 +94,18 @@ There are 3 different variations of the language graphs. Run the corresponding j
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/5.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/5.png" width="200px">
 </p>
  
 #### Step-3c: ConceptNet5 with Unique edges
   - Run 6_LanguageModel_CN_UniqueEdge.ipynb
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/6.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/6.png" width="200px">
 </p>
 
 ### Step-4: **(RASA)** Building Dictionary Bot with RASA + TigerGraph ConceptNet5
+
 #### Step-4a: Install RASA
 
 Open a new terminal and setup RASA using the below commands:
@@ -107,36 +115,37 @@ Open a new terminal and setup RASA using the below commands:
 - $ pip install rasa
 
 #### Step-4q: Create new RASA project
+
 - $ rasa init
 
 After the execution of the above command, you will be prompted to enter project directory and name as desired. In this case, project named 'WIKI_Chatbot' will be created in the current directory as shown below,
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/7.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/7.png" width="400px">
 </p>
-
 Now th chatbot project is created successfully,
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/8.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/8.png" width="400px">
 </p>
-
 Ya, that's quite simple to create a chatbot now with RASA!
 
 #### Step-4b: Define intents, stories, action triggers
+
 Now, navigate to the project folder WIKI_Chatbot/data and modify the default nlu.yml and rules.yml files by adding intents, rules for our dictionary usecase as show below,
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/9.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/9.png" width="500px">
 </p>
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/10.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/10.png" width="400px">
 </p>
 
 #### Step-4c: Install the TigerGraph python library using pip with the below command,
+
 - pip install pyTigerGraph
 
 #### Step-4d: Define action endpoints
@@ -145,25 +154,32 @@ Now, navigate to the project folder WIKI_Chatbot/actions and modify the actions.
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/11.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/11.png" width="500px">
 </p>
 
 #### Step-4e: Set domain.yml 
+
 Add the defined action method to the domain.yml as shown below,
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/12.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/12.png" width="400px">
 </p>
 
-Here, 'get_word_definition' is the name of the insstalled GSQL query in the tgcloud database. We will go through each query used in the actions in the next section.
 
 With this step, we are done with the installation and configuration of the RASA chatbot.
 
 ### Step-5: **(gSql Queries)** Create & Install gsql queries
 
-Recreate the below queries in tgcloud.io,
-**pic
+Recreate the below queries in tgcloud.io => Check gsql folder in the repository
+
+Steps to create: https://docs-legacy.tigergraph.com/v/2.3/dev/gsql-ref/querying/query-operations
+- Create 
+- Install
+
+<p align="center">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/13.png" width="500px">
+</p>
  
 ### Step-6: **(Web UI)** Setting up a web ui for the RASA chatbot
 
@@ -172,7 +188,7 @@ Recreate the below queries in tgcloud.io,
  
   
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/13.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/14.png" width="400px">
 </p>
 
 All right, we are one step close to seeing the working of the TigerGraph and RASA integration.
@@ -190,17 +206,20 @@ Terminal-2:
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/14.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/15.png" width="400px">
 </p>
 
+<p align="center">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/15.png" width="400px">
+</p>
 ### Step-8: **(ChatBot UI)** Open Chatbot User interface
 
 - Unzip ChatBot_Widget folder.
-- Hit open ChatBot_Widget/index.html to start interacting with the TigerBot movie recommendation engine!
+- Hit open ChatBot_Widget/index.html to start interacting with the TG WIKI Bot!
 
 
 <p align="center">
-<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/15.png" width="700" height="450">
+<img src="https://github.com/sudha-vijayakumar/LanguageModel/blob/main/git_snapshots/17.png" width="400px">
 </p>
 
 Yes, we are DONE! 
