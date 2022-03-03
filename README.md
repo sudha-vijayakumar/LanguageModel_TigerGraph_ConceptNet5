@@ -68,7 +68,10 @@ A detailed overview of the project is presented in the below technical article:
 
   >> Terminal-2:
   - $ rasa run actions
-
+  
+>  Time to chat with TigerGraph. 
+   - Unzip ChatBot_Widget folder.
+   - Hit open ChatBot_Widget/index.html to start interacting with the TG WIKI Bot!
 
 > **NOTE:**
 This help page will not go into the depth of RASA, TigerGraph functionalities. This help page will touch base and demo how ConceptNet5 can be loaded into TigerGraph and integrated with RASA to implement a dictionary bot.
