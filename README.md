@@ -20,6 +20,7 @@ A detailed overview of the project is presented in the below technical article:
   - Jupyter notebook => https://jupyter.org/install
   - RASA => https://rasa.com/docs/rasa/installation/
   - Create tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
+    - keep the solution url, username, password handy to plug-in to the backend APIs in RASA at Step-4.
 
 > Step-0: Clone the repository
 
