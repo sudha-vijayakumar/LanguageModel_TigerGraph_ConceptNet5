@@ -17,7 +17,7 @@ A detailed overview of the project is presented in the below technical article:
 > Prerequisites: 
   Before, getting started install the following,
   - Python 3 => https://docs.python-guide.org/starting/install3/osx/
-  - Jupyter notebook => https://jupyter.org/install
+  - Jupyter notebook/ MS Visual Studio Code => https://jupyter.org/install
   - RASA => https://rasa.com/docs/rasa/installation/
   - Create tgcloud solution => https://www.tigergraph.com/blog/taking-your-first-steps-in-learning-tigergraph-cloud/
     - keep the solution url, username, password handy to plug-in to the backend APIs in RASA at Step-4.
