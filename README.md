@@ -235,5 +235,6 @@ I hope this source is informative and helpful.
 
 # References:
 https://medium.com/analytics-vidhya/integrating-rasa-chatbot-with-django-web-framework-f6cb71c58467
+https://github.com/tomkdickinson/wordnet_conceptnet_neo4j
 https://github.com/JiteshGaikwad/Chatbot-Widget/
 
